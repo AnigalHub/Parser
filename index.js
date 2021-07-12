@@ -7,10 +7,14 @@ axios.get('https://stolichki.ru/search?name=%D0%BA%D0%B5%D1%82%D0%BE%D0%BD%D0%B0
         console.log(response.data)
         const root = parse(response.data)
         const all = root.querySelectorAll('.product-info')
+        const all_title = root.querySelectorAll('.product-title')
+        const all_price = root.querySelectorAll('.price-with-discount')
+        console.log(all_title);
+        console.log(all_price);
         console.log(all)
         for (let i=0; i< all.length ; i++){
-            let title =  all[i].childNodes[1].childNodes[1].childNodes[0]._rawText;
-            let price = all[i].childNodes[3].childNodes[1].childNodes[1].childNodes[0]._rawText;
+            let title =  all_title[i].childNodes[1].childNodes[0]._rawText;
+            let price = all_price[i].childNodes[0]._rawText;
             console.log(title + ": "+ price.split('&')[0]);
         }
 
