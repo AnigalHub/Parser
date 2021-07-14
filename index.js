@@ -1,4 +1,4 @@
-const axios = require('axios'); 
+const axios = require('axios');
 const { parse } = require('node-html-parser');
 
 function Parse(){
@@ -10,9 +10,7 @@ function Parse(){
             const all = root.querySelectorAll('.product-info')
             const all_title = root.querySelectorAll('.product-title')
             const all_price = root.querySelectorAll('.price-with-discount')
-          //  console.log(all_title);
-           // console.log(all_price);
-          //  console.log(all)
+          //  console.log(all_title);console.log(all_price);console.log(all)
             for (let i=0; i< all.length ; i++){
                 let title =  all_title[i].childNodes[1].childNodes[0]._rawText;
                 let price = all_price[i].childNodes[0]._rawText;
@@ -24,5 +22,10 @@ function Parse(){
             error => console.log(error)
         );
 }
-let timerId = setInterval(() => Parse(), 2000);
+function RandomNumber(min, max, step){
+    return step * Math.floor(Math.random() * (max - min) / step + min / step);
+}
+
+let timerId = setInterval(() => Parse(), RandomNumber(1000, 60000, 1000));
+console.log(timerId)
 setTimeout(() => { clearInterval(timerId); }, 60000);
