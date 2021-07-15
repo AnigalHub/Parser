@@ -14,7 +14,7 @@ function Parse(){
             for (let i=0; i< all.length ; i++){
                 let title =  all_title[i].childNodes[1].childNodes[0]._rawText;
                 let price = all_price[i].childNodes[0]._rawText;
-                console.log(title + ": "+ price.split('&')[0]);
+                console.log(title + ": "+ price.split('&')[0] + "руб");
             }
             console.log("  ")
         })
